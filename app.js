@@ -1,9 +1,10 @@
 const express = require("express");
 const path = require("path");
+const fetch = require('node-fetch');
 const app = express();
 require('dotenv').config({ path: 'API_KEY.env' });
 const RapidKey = process.env.RAPID_KEY;
-const fetch = require('node-fetch');
+
 console.log(RapidKey);
 
 app.use(express.static(
