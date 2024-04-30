@@ -6,3 +6,7 @@ h1{
 body{
     background-color: black;
 }
+
+html {
+  font-family:"Kode Mono", monospace; /*font from google */
+}
