@@ -1,5 +1,7 @@
 $(document).ready(function() {
     $('#submit').click(function() {
+        $("container").clear();
+
         console.log($('#song-input').val());
         let url = new URL($('#song-input').val());
         let pathSegments = url.pathname.split('/');
@@ -15,3 +17,4 @@ $(document).ready(function() {
         });
     });
 });
+
