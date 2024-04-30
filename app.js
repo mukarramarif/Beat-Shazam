@@ -1,28 +1,48 @@
-const express = require("express");
-const path = require("path");
+import express from "express";
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
 const app = express();
-require('dotenv').config({ path: 'API_KEY.env' });
+
+import('dotenv').then((dotenv) => {
+    dotenv.config({ path: 'API_KEY.env' });
+});
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 const RapidKey = process.env.RAPID_KEY;
-const fetch = require('node-fetch');
-console.log(RapidKey);
+import fetch from 'node-fetch';
+
+
 
 app.use(express.static(
     path.resolve(__dirname, "public")
-  ));
-app.get("/send-playlist", async (req, res) => {
-    const url = `https://spotify23.p.rapidapi.com/playlist/?id=${req.query.id}`;
-    const options = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': RapidKey,
-            'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
-        }
-    }
-    const response = await fetch(url, options);
-    const json = await response.json();
-    console.log(json);
-    res.json(json);
-  
-});
+));
+async function startServer() {
+    const dotenv = await import('dotenv');
+    dotenv.config({ path: 'API_KEY.env' });
 
-app.listen(3000, () => console.log("Go Beat Shazam!"));
+    const RapidKey = process.env.RAPID_KEY;
+    console.log(RapidKey);
+
+    app.get("/send-playlist", async (req, res) => {
+        const url = `https://spotify23.p.rapidapi.com/playlist/?id=${req.query.id}`;
+        const options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': RapidKey,
+                'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
+            }
+        }
+        // Rest of your code...
+    });
+
+    // Start your server here...
+    app.listen(3000, () => {
+        console.log('Server is running on port 3000');
+    });
+}
+
+startServer();
