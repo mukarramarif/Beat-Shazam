@@ -6,9 +6,15 @@ h1{
 body{
     background-color: black;
 }
+<<<<<<< HEAD
 #song-input
 {
     height:50px;
     width: 600px;
     font-size:14pt;
+=======
+
+html {
+  font-family:"Kode Mono", monospace; /*font from google */
+>>>>>>> b808c6a8fcb06e123993aade7e88554508700651
 }
