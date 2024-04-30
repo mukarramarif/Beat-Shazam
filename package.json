@@ -1,0 +1,19 @@
+{
+  "name": "beat-shazam",
+  "version": "1.0.0",
+  "description": "Beat Shazam",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mukarramarif/Beat-Shazam.git"
+  },
+  "author": "Miles Jaffee, Matthew Schoonmaker, Muhammad Mukarram Arif",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mukarramarif/Beat-Shazam/issues"
+  },
+  "homepage": "https://github.com/mukarramarif/Beat-Shazam#readme"
+}
