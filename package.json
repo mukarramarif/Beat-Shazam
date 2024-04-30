@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/mukarramarif/Beat-Shazam/issues"
   },
-  "homepage": "https://github.com/mukarramarif/Beat-Shazam#readme"
+  "homepage": "https://github.com/mukarramarif/Beat-Shazam#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
 }
