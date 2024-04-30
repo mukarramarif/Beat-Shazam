@@ -6,3 +6,9 @@ h1{
 body{
     background-color: black;
 }
+#song-input
+{
+    height:50px;
+    width: 600px;
+    font-size:14pt;
+}
