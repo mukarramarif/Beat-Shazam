@@ -1,5 +1,8 @@
 h1{
-    color: black;
+    color: greenyellow;
     font-family:"Kode Mono", monospace; /*font from google */
     text-align: center;
   }
+body{
+    background-color: black;
+}
