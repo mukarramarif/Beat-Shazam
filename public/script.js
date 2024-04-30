@@ -1,7 +1,7 @@
 $(document).ready(function() {
-    $('#submit').click(function() {
-        console.log($('#song-input').val());
-        let url = new URL($('#song-input').val());
+    $('#submitButton').click(function() {
+        console.log($('#playlist-url-box').val());
+        let url = new URL($('#playlist-url-box').val());
         let pathSegments = url.pathname.split('/');
         let playlistId = pathSegments[2];
         console.log(playlistId);
@@ -15,3 +15,4 @@ $(document).ready(function() {
         });
     });
 });
+

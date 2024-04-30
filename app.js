@@ -1,17 +1,16 @@
 const express = require("express");
 const path = require("path");
-//const Database =require( "better-sqlite3");
 const app = express();
-require('dotenv').config();
+require('dotenv').config({ path: 'API_KEY.env' });
 const RapidKey = process.env.RAPID_KEY;
 const fetch = require('node-fetch');
-
+console.log(RapidKey);
 
 app.use(express.static(
     path.resolve(__dirname, "public")
   ));
 app.get("/send-playlist", async (req, res) => {
-    const url = `https://spotify23.p.rapidapi.com/playlist/${req.query.id}`;
+    const url = `https://spotify23.p.rapidapi.com/playlist/?id=${req.query.id}`;
     const options = {
         method: 'GET',
         headers: {
