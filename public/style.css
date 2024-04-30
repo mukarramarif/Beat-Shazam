@@ -1,5 +1,17 @@
 h1{
-    color: black;
+    color: greenyellow;
     font-family:"Kode Mono", monospace; /*font from google */
     text-align: center;
   }
+body{
+    background-color: black;
+}
+#song-input
+{
+    height:50px;
+    width: 600px;
+    font-size:14pt;
+}
+html {
+  font-family:"Kode Mono", monospace; /*font from google */
+}

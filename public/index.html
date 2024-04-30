@@ -9,9 +9,18 @@
 <body>
   <!-- My Google font is in my Style.css -->
   <h1>Beat Shazam</h1> <!-- Title of Page -->
-  <input type="text" id="song-input">
-  <input type="button" value="submit" id="submit">
-  <script src="jquery.min.js" crossorigin="anonymous"></script>
+
+
+  <div id="container">
+    <form>
+      <input type="text" id="playlist-url-box" placeholder="Playlist URL...">
+      <input type="button" value="submit" id="submitButton"> <!-- put in the playlist url... the game part is constructed with ajax -->
+
+    </form>
+  </div>
+ 
+  <script src="js/vendor/jquery.min.js" crossorigin="anonymous"></script>
   <script src="script.js"></script>
+
 </body>
 </html>
