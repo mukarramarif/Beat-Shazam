@@ -22,7 +22,8 @@ body{
 html {
   font-family:"Kode Mono", monospace; /*font from google */
 }
-#container{
+
+#cc{
   display: flex;
   justify-content: center;
 }
