@@ -14,9 +14,20 @@
   <div id="container">
     <form>
       <input type="text" id="playlist-url-box" placeholder="Playlist URL...">
-      <input type="button" value="submit" id="submitButton"> <!-- put in the playlist url... the game part is constructed with ajax -->
+      <input type="button" value="Submit" id="submitButton"> <!-- put in the playlist url... the game part is constructed with ajax -->
 
     </form>
+  </div>
+
+  <div hidden id="part-2-container">
+    <p>Next Step</p> 
+        <audio controls id='testSongId'>
+          <source src="" type="audio/mp3" id="songFile">
+      </audio> 
+      <table id='guessingTable'>
+
+
+      </table>
   </div>
  
   <script src="jquery.min.js" crossorigin="anonymous"></script>

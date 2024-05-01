@@ -12,12 +12,15 @@ $(document).ready(function() {
             success: function(data) { //successfully sent the playlist link
                 console.log(data);
                 let song = createSongElement(data);
-                $("#container").empty();
-                $("#container").append(`<p>Next Step</p> 
+                $("#container").hide();
+                /*$("#container").append(`
                                         <audio controls id='testSongId'>
                                             <source src="${song}" type="audio/mp3">
                                         </audio> 
-                                        <table id='guessingTable'></table>`);
+                                        <table id='guessingTable'></table>`);*/
+                $("#part-2-container").show();
+                $("#songFile").attr("src", song);
+                $("audio")[0].load();
             }
         });
     });

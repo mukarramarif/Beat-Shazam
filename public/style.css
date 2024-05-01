@@ -1,17 +1,28 @@
 h1{
-    color: greenyellow;
-    font-family:"Kode Mono", monospace; /*font from google */
+    color: white;
     text-align: center;
+    font-size: 30pt;
   }
 body{
-    background-color: black;
+    background-color: #23A3E5;
 }
-#song-input
+#playlist-url-box
 {
     height:50px;
     width: 600px;
     font-size:14pt;
 }
+#submitButton
+{
+    height:55px;
+    width: 70px;
+    text-align: center;
+    font-size:13pt;
+}
 html {
   font-family:"Kode Mono", monospace; /*font from google */
+}
+#container{
+  display: flex;
+  justify-content: center;
 }
