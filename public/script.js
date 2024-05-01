@@ -33,22 +33,17 @@ $(document).ready(function() {
     $('#guessButton').click(function(){
         let guess = $('#guess').val();
         console.log(guess);
-        if(song.track.artists.length === 1){
-            if(guess === song.track.artists[0].name){
-                console.log("correct");
-            }
-            else{
-                console.log("wrong");
-            }
-        }   
-        else{
-            for(let i=0; i<song.track.artists.length; i++){
-                if(guess === song.track.artist[i]){
+        let foundArtist = false;
+        for(let i=0; i<song.track.artists.length; i++){
+            
+                console.log(song.track.artists[i]);
+                if(guess === song.track.artists[i].name){
+                    foundArtist = true;
                     console.log("correct");
                 }
             }
-            console.log("Wrong");
-        }
+            if (!foundArtist) console.log("Wrong");
+        
         
     });
 });
