@@ -13,8 +13,11 @@ $(document).ready(function() {
                 console.log(data);
                 let song = createSongElement(data);
                 $("#container").empty();
-                $("#container").innerHTML(`<audio id='testSongId' src = ${song}></audio> <table id='guessingTable'></table>`);
-               
+                $("#container").append(`<p>Next Step</p> 
+                                        <audio controls id='testSongId'>
+                                            <source src="${recievedData.previewUrl}" type="audio/mp3">
+                                        </audio> 
+                                        <table id='guessingTable'></table>`);
             }
         });
     });
