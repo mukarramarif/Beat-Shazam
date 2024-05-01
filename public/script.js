@@ -9,15 +9,24 @@ $(document).ready(function() {
             url: "/send-playlist",
             type: 'GET',
             data: { id: playlistId },
-            success: function(recievedData) { //successfully sent the playlist link
-                console.log(recievedData);
+            success: function(data) { //successfully sent the playlist link
+                console.log(data);
+                let song = createSongElement(data);
                 $("#container").empty();
                 $("#container").append(`
                                         <audio controls id='testSongId'>
-                                            <source src="${recievedData.previewUrl}" type="audio/mp3">
+                                            <source src="${song}" type="audio/mp3">
                                         </audio> 
                                         <table id='guessingTable'></table>`);
             }
         });
     });
 });
+
+function createSongElement(songs){
+    let song = songs.items[0];
+    let songUrl= song.track.preview_url;
+    console.log(songUrl);
+    return songUrl;   
+
+}
