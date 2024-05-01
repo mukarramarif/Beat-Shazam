@@ -12,6 +12,13 @@ body{
     width: 600px;
     font-size:14pt;
 }
+#submitButton
+{
+    height:55px;
+    width: 70px;
+    text-align: center;
+    font-size:13pt;
+}
 html {
   font-family:"Kode Mono", monospace; /*font from google */
 }
