@@ -28,7 +28,7 @@ async function startServer() {
     console.log(RapidKey);
 
     app.get("/send-playlist", async (req, res) => {
-        const url = `https://spotify23.p.rapidapi.com/playlist/?id=${req.query.id}`;
+        const url = `https://spotify23.p.rapidapi.com/playlist_tracks/?id=${req.query.id}`;
         const options = {
             method: 'GET',
             headers: {
@@ -36,7 +36,7 @@ async function startServer() {
                 'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
             }
         }
-        // Rest of your code...
+        res.send(await fetch(url, options).then(response => response.json()));
     });
 
     // Start your server here...
