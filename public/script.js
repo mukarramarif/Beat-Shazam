@@ -11,12 +11,20 @@ $(document).ready(function() {
             data: { id: playlistId },
             success: function(data) { //successfully sent the playlist link
                 console.log(data);
+                let song = createSongElement(data);
                 $("#container").empty();
-                $("#container").innerHTML("<audio id='testSongId'></audio> <table id='guessingTable'></table>");
+                $("#container").innerHTML(`<audio id='testSongId' src = ${song}></audio> <table id='guessingTable'></table>`);
+               
             }
         });
     });
 });
 
-function createSongElement()
+function createSongElement(songs){
+    let song = songs.items[0];
+    let songUrl= song.track.preview_url;
+    console.log(songUrl);
+    let songElementUrlsrc = song.preview_url;
+    return songElementUrlsrc;   
 
+}
