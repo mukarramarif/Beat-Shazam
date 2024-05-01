@@ -15,7 +15,7 @@ $(document).ready(function() {
                 $("#container").empty();
                 $("#container").append(`<p>Next Step</p> 
                                         <audio controls id='testSongId'>
-                                            <source src="${recievedData.previewUrl}" type="audio/mp3">
+                                            <source src="${song}" type="audio/mp3">
                                         </audio> 
                                         <table id='guessingTable'></table>`);
             }
@@ -27,7 +27,6 @@ function createSongElement(songs){
     let song = songs.items[0];
     let songUrl= song.track.preview_url;
     console.log(songUrl);
-    let songElementUrlsrc = song.preview_url;
-    return songElementUrlsrc;   
+    return songUrl;   
 
 }
