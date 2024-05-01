@@ -12,7 +12,7 @@ $(document).ready(function() {
             success: function(recievedData) { //successfully sent the playlist link
                 console.log(recievedData);
                 $("#container").empty();
-                $("#container").append(`<p>Next Step</p> 
+                $("#container").append(`
                                         <audio controls id='testSongId'>
                                             <source src="${recievedData.previewUrl}" type="audio/mp3">
                                         </audio> 
