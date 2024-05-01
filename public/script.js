@@ -19,7 +19,7 @@ $(document).ready(function() {
                                         </audio> 
                                         <table id='guessingTable'></table>`);*/
                 $("#part-2-container").show();
-                $("#songFile").attr("src", song);
+                $("#songFile").attr("src", song.track.preview_url);
                 $("audio")[0].load();
             }
         });
@@ -35,6 +35,6 @@ function createSongElement(songs){
         return createSongElement(songs);
     }
     console.log(songUrl);
-    return songUrl;   
+    return song;   
 }
 
