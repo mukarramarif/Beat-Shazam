@@ -22,8 +22,5 @@ $(document).ready(function() {
     });
 });
 
-<<<<<<< HEAD
 //function createSongElement()
-=======
->>>>>>> 4e9a2df4fc8615986230c242406969d87eefda26
 
