@@ -21,9 +21,3 @@ $(document).ready(function() {
         });
     });
 });
-<<<<<<< HEAD
-=======
-
-//function createSongElement()
-
->>>>>>> f55f54bca20c478b834c99bf1d16b9942432e484
