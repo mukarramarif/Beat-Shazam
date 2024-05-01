@@ -9,8 +9,10 @@ $(document).ready(function() {
             url: "/send-playlist",
             type: 'GET',
             data: { id: playlistId },
-            success: function(data) {
+            success: function(data) { //successfully sent the playlist link
                 console.log(data);
+                $("#container").empty();
+                $("#container").innerHTML("<audio id='testSongId'></audio> <table id='guessingTable'></table>");
             }
         });
     });
