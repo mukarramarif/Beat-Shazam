@@ -9,10 +9,14 @@ $(document).ready(function() {
             url: "/send-playlist",
             type: 'GET',
             data: { id: playlistId },
-            success: function(data) { //successfully sent the playlist link
-                console.log(data);
+            success: function(recievedData) { //successfully sent the playlist link
+                console.log(recievedData);
                 $("#container").empty();
-                $("#container").append(`<p>Next Step</p> <audio controls id='testSongId'><source src="" type="audio/mp3"></audio> <table id='guessingTable'></table>`);
+                $("#container").append(`<p>Next Step</p> 
+                                        <audio controls id='testSongId'>
+                                            <source src="${recievedData.previewUrl}" type="audio/mp3">
+                                        </audio> 
+                                        <table id='guessingTable'></table>`);
             }
         });
     });
