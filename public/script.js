@@ -9,11 +9,21 @@ $(document).ready(function() {
             url: "/send-playlist",
             type: 'GET',
             data: { id: playlistId },
-            success: function(data) { //successfully sent the playlist link
-                console.log(data);
+            success: function(recievedData) { //successfully sent the playlist link
+                console.log(recievedData);
                 $("#container").empty();
-                $("#container").append(`<p>Next Step</p> <audio controls id='testSongId'><source src="" type="audio/mp3"></audio> <table id='guessingTable'></table>`);
+                $("#container").append(`<p>Next Step</p> 
+                                        <audio controls id='testSongId'>
+                                            <source src="${recievedData.previewUrl}" type="audio/mp3">
+                                        </audio> 
+                                        <table id='guessingTable'></table>`);
             }
         });
     });
 });
+<<<<<<< HEAD
+=======
+
+//function createSongElement()
+
+>>>>>>> f55f54bca20c478b834c99bf1d16b9942432e484
