@@ -24,9 +24,14 @@ $(document).ready(function() {
 });
 
 function createSongElement(songs){
-    let song = songs.items[0];
+    let randomIndex = Math.floor(Math.random() * songs.items.length);
+    console.log(randomIndex);
+    let song = songs.items[randomIndex];
     let songUrl= song.track.preview_url;
+    if(songUrl == null){
+        return createSongElement(songs);
+    }
     console.log(songUrl);
     return songUrl;   
-
 }
+
