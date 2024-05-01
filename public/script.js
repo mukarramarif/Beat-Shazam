@@ -12,11 +12,10 @@ $(document).ready(function() {
             success: function(data) { //successfully sent the playlist link
                 console.log(data);
                 $("#container").empty();
-                $("#container").innerHTML("<audio id='testSongId'></audio> <table id='guessingTable'></table>");
+                $("#container").append(`<p>Next Step</p> <audio controls id='testSongId'><source src="" type="audio/mp3"></audio> <table id='guessingTable'></table>`);
             }
         });
     });
 });
 
-function createSongElement()
 
