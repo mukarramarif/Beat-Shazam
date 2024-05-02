@@ -8,8 +8,8 @@ body{
 }
 #playlist-url-box
 {
-    height:50px;
-    width: 600px;
+    height:fit-content;
+    width: fit-content;
     font-size:14pt;
 }
 #submitButton

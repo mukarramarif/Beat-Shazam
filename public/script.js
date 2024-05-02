@@ -39,12 +39,17 @@ $(document).ready(function() {
     $('#guessButton').click(function(){
         let guess = $('#guess').val();
         console.log(guess);
+        let answer = false;
         for(let i=0; i<song.track.artists.length; i++){
                 if(guess === song.track.artists[i].name){
                     console.log("correct");
+                    answer = true;
                 }
             }
+        if(!answer){
             console.log("Wrong");
+        }
+           
         
         
     });
