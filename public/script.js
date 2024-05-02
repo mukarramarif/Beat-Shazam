@@ -23,7 +23,7 @@ $(document).ready(function() {
 
 
                 $("#songFile").attr("src", song.track.preview_url);
-                $("#thumbnail").attr("src", getThumbnail(song));
+                //$("body").css("background-image", "url(" + getThumbnail(song) + ")");
                 $("audio")[0].load();
             
                 $("#guess").attr("placeholder", "Guess the ARTIST...");
@@ -50,7 +50,8 @@ $(document).ready(function() {
             points-=20;
         } else { //right answer, begin round 2...
             beginTitleRound();
-            $("#table-artistname").innerHTML(guess);
+            $("#table-artistname").empty();
+            $("#table-artistname").append(guess);
         }
 
            
