@@ -23,7 +23,7 @@ $(document).ready(function() {
 
 
                 $("#songFile").attr("src", song.track.preview_url);
-                $("#thumbnail").attr("src", getThumbnail(song));
+                //$("body").css("background-image", "url(" + getThumbnail(song) + ")");
                 $("audio")[0].load();
             
                 $("#guess").attr("placeholder", "Guess the ARTIST...");
