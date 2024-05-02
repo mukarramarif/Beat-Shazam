@@ -3,6 +3,7 @@ let totalPoints;
 let beganTitleRound = false;
 let beganYearRound = false;
 $(document).ready(function() {
+    totalPoints = 0;
 
     $("#submitButton").removeAttr("onclick");
     
@@ -68,6 +69,9 @@ $(document).ready(function() {
             $("#round").append("Round 2");
             $("#table-artistname").empty();
             $("#table-artistname").append(guess);
+            totalPoints += points;
+
+            $("score").val(totalPoints);
         }
 }});
     $("guessButton2").click(function(){
@@ -104,7 +108,6 @@ function beginTitleRound() {
 
         let guess = $('#guess').val();
         $('#guess').val(''); //clear the input field
-        $("#guess").val(''); //clear the input field
         console.log(guess);
         console.log(song.track.name);
         if(guess === song.track.name){
@@ -115,6 +118,10 @@ function beginTitleRound() {
             $("#round").append("Round 3");
             $("#table-songtitle").empty();
             $("#table-songtitle").append(guess);
+
+            totalPoints += titlePoints;
+
+            $("score").val(totalPoints);
 
         }
         else {
@@ -148,6 +155,10 @@ function beginYearRound() {
 
             $("#table-year").empty();
             $("#table-year").append(guess);
+
+            totalPoints += yearPoints;
+
+            $("score").val(yearPoints);
 
         }
         else {
