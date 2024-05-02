@@ -15,7 +15,7 @@ $(document).ready(function() {
                 console.log(data);
                 song = createSongElement(data);
                 $("#container").hide();
-                
+                $("#scoreborad").show();
                 $("#part-2-container").show();
                 $("#part-2-container").css("display", "flex");
                 $("#part-2-container").css("flex-wrap", "wrap");
@@ -25,7 +25,7 @@ $(document).ready(function() {
                 $("#songFile").attr("src", song.track.preview_url);
                 //$("body").css("background-image", "url(" + getThumbnail(song) + ")");
                 $("audio")[0].load();
-            
+                $("#thumbnail").attr("src", getThumbnail(song));
                 $("#guess").attr("placeholder", "Guess the ARTIST...");
                 
 
