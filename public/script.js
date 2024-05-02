@@ -47,6 +47,7 @@ $(document).ready(function() {
 
         let guess = $('#guess').val();
         //$("#guess").val(''); //clear the input field
+        
         console.log(guess);
         let answer = false;
         for(let i=0; i<song.track.artists.length; i++){
@@ -91,7 +92,7 @@ function createSongElement(songs){
 
 function beginTitleRound() {
     
-    
+    $('#guess').val('');
     $("#guess").attr("placeholder", "Guess the SONG TITLE...");
 
     let titlePoints = 100;
@@ -102,6 +103,7 @@ function beginTitleRound() {
 
 
         let guess = $('#guess').val();
+        $('#guess').val(''); //clear the input field
         console.log(guess);
         console.log(song.track.name);
         if(guess === song.track.name){
