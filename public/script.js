@@ -39,22 +39,13 @@ $(document).ready(function() {
     $('#guessButton').click(function(){
         let guess = $('#guess').val();
         console.log(guess);
-        if(song.track.artists.length === 1){
-            if(guess === song.track.artists[0].name){
-                console.log("correct");
-            }
-            else{
-                console.log("wrong");
-            }
-        }   
-        else{
-            for(let i=0; i<song.track.artists.length; i++){
-                if(guess === song.track.artist[i]){
+        for(let i=0; i<song.track.artists.length; i++){
+                if(guess === song.track.artists[i].name){
                     console.log("correct");
                 }
             }
             console.log("Wrong");
-        }
+        
         
     });
 });

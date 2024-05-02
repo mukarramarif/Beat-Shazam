@@ -9,14 +9,17 @@
 <body>
   <!-- My Google font is in my Style.css -->
   <h1>Beat Shazam</h1> <!-- Title of Page -->
+  
 
 <div id = cc>
+  
   <div id="container">
-    <form>
+
+    <p>
       <input type="text" id="playlist-url-box" placeholder="Playlist URL...">
       <input type="button" value="Submit" id="submitButton"> <!-- put in the playlist url... the game part is constructed with ajax -->
 
-    </form>
+    </p>
   </div>
 
   <div hidden id="part-2-container">
@@ -24,9 +27,8 @@
         <audio controls id='testSongId'>
           <source src="" type="audio/mp3" id="songFile">
       </audio> 
-      <input type="text" id="guess">
-      <input type="button" value="Submit" id="submitButton">
-      <img src="" alt="" id="thumbnail">
+
+      
       <table id='guessingTable'>
         <thead> <th>Song Title</th><th>Artist</th><th>Year</th></thead>
         <tbody> <td id="table-songtitle">???</td><td id="table-artistname">???</td><td id="table-year">???</td></tbody>
@@ -35,6 +37,8 @@
 
       <input type="text" id="guess">
       <input type="button" value="Submit" id="guessButton">
+
+      <img src="" alt="" id="thumbnail">
 
   </div>
 </div>
