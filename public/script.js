@@ -32,6 +32,7 @@ $(document).ready(function() {
             }
         });
     });
+    let points = 100;
     $('#guessButton').click(function(){
         let guess = $('#guess').val();
         console.log(guess);
@@ -40,14 +41,17 @@ $(document).ready(function() {
                 if(guess === song.track.artists[i].name){
                     console.log("correct");
                     answer = true;
+                    console.log(points);
                 }
         }
 
         if(!answer){
             console.log("Wrong");
+            points-=20;
         } else { //right answer, begin round 2...
             beginTitleRound();
-            $("#table-artistname").innerHTML(guess);
+            $("#table-artistname").empty();
+            $("#table-artistname").append(guess);
         }
 
            
