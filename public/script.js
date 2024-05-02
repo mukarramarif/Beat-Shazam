@@ -47,7 +47,8 @@ $(document).ready(function() {
             console.log("Wrong");
         } else { //right answer, begin round 2...
             beginTitleRound();
-            $("#table-artistname").innerHTML(guess);
+            $("#table-artistname").empty();
+            $("#table-artistname").append(guess);
         }
 
            
