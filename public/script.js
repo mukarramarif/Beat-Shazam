@@ -22,6 +22,7 @@ $(document).ready(function() {
                                         <table id='guessingTable'></table>`);*/
                 $("#part-2-container").show();
                 $("#songFile").attr("src", song.track.preview_url);
+                $("#thumbnail").attr("src", getThumbnail(song));
                 $("audio")[0].load();
             
                 
@@ -65,3 +66,6 @@ function createSongElement(songs){
     return song;   
 }
 
+function getThumbnail(song){
+    return song.track.album.images[0].url;
+}

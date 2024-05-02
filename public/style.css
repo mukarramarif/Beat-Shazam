@@ -38,3 +38,6 @@ html {
   border: 1px solid black;
   border-radius: 3px;
 }
+#thumbnail{
+  filter: blur(16px);
+}
