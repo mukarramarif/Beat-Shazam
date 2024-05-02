@@ -49,7 +49,9 @@ $(document).ready(function() {
 
         if(!answer){
             console.log("Wrong artist");
-            points-=20;
+            if(points != 0){
+                points-=20;
+            }
         } else { //right answer, begin round 2...
             beginTitleRound();
             $("#table-artistname").empty();
