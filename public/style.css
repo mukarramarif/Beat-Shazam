@@ -1,15 +1,16 @@
 h1{
-    color: white;
+    color: black;
     text-align: center;
     font-size: 30pt;
   }
 body{
     background-color: #23A3E5;
-    background-image: url("https://live.staticflickr.com/7363/9450562837_6caea5878c_b.jpg");
+    background-image: url("assets/back2.png");
+
     background-repeat: repeat;
 }
 #playlist-url-box
-{
+{ 
     height:fit-content;
     width: fit-content;
     font-size:14pt;

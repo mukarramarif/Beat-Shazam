@@ -41,10 +41,15 @@ $(document).ready(function() {
                     console.log("correct");
                     answer = true;
                 }
-            }
+        }
+
         if(!answer){
             console.log("Wrong");
+        } else { //right answer, begin round 2...
+            beginTitleRound();
+            $("#table-artistname").innerHTML(guess);
         }
+
            
         
         
@@ -61,6 +66,19 @@ function createSongElement(songs){
     }
     console.log(songUrl);
     return song;   
+}
+
+function beginTitleRound() {
+    $('#guessButton').attr("onclick", null);
+    $("#guess").empty();
+    $("#guess").attr("placeholder", "Guess the SONG TITLE...");
+
+    $('#guessButton').click(function(){
+        let guess = $('#guess').val();
+        console.log(guess);
+
+    });
+
 }
 
 function getThumbnail(song){
