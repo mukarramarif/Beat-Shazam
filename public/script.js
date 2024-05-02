@@ -21,6 +21,11 @@ $(document).ready(function() {
                                         </audio> 
                                         <table id='guessingTable'></table>`);*/
                 $("#part-2-container").show();
+                $("#part-2-container").css("display", "flex");
+                $("#part-2-container").css("flex-wrap", "wrap");
+                $("#part-2-container").css("flex-direction", "column");
+
+
                 $("#songFile").attr("src", song.track.preview_url);
                 $("#thumbnail").attr("src", getThumbnail(song));
                 $("audio")[0].load();

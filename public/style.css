@@ -38,6 +38,12 @@ html {
   border: 1px solid black;
   border-radius: 3px;
 }
+/* #part-2-container{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+} */
 #thumbnail{
   filter: blur(16px);
+  width: 25%;
 }
