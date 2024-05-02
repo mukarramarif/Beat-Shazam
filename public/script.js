@@ -1,5 +1,7 @@
+let song;
+let totalPoints;
 $(document).ready(function() {
-    let song;
+    
     $('#submitButton').click(function() {
         console.log($('#playlist-url-box').val());
         let url = new URL($('#playlist-url-box').val());
@@ -40,15 +42,17 @@ $(document).ready(function() {
         let answer = false;
         for(let i=0; i<song.track.artists.length; i++){
                 if(guess === song.track.artists[i].name){
-                    console.log("correct");
+                    console.log("correct artist");
                     answer = true;
                     console.log(points);
                 }
         }
 
         if(!answer){
-            console.log("Wrong");
-            points-=20;
+            console.log("Wrong artist");
+            if(points != 0){
+                points-=20;
+            }
             $("#score").empty();
             $("#score").append(points);
         } else { //right answer, begin round 2...
@@ -82,12 +86,28 @@ function beginTitleRound() {
     $("#guess").empty();
     $("#guess").attr("placeholder", "Guess the SONG TITLE...");
 
+    let titlePoints = 100;
+
     $('#guessButton').click(function(){
         let guess = $('#guess').val();
         console.log(guess);
 
+        if(guess === song.track.name){
+            console.log("Correct name");
+            beginYearRound();
+
+        }
+        else {
+            titlePoints -= 20;
+            console.log("Wrong name");
+        }
+
     });
 
+}
+
+function beginYearRound() {
+    
 }
 
 function getThumbnail(song){
