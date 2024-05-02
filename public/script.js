@@ -1,6 +1,8 @@
 let song;
 let totalPoints;
 $(document).ready(function() {
+
+    $("#submitButton").removeAttr("onclick");
     
     $('#submitButton').on("click", function() {
         console.log($('#playlist-url-box').val());
@@ -53,8 +55,8 @@ $(document).ready(function() {
             points-=20;
         } else { //right answer, begin round 2...
             beginTitleRound();
-            $("round").emptu();
-            $("round").append("Round 2");
+            $("#round").empty();
+            $("#round").append("Round 2");
             $("#table-artistname").empty();
             $("#table-artistname").append(guess);
         }
@@ -78,7 +80,7 @@ function createSongElement(songs){
 }
 
 function beginTitleRound() {
-    $('#guessButton').attr("onclick", null);
+    $("#submitButton").removeAttr("onclick");
     $("#guess").empty();
     $("#guess").attr("placeholder", "Guess the SONG TITLE...");
 
@@ -103,7 +105,7 @@ function beginTitleRound() {
 }
 
 function beginYearRound() {
-    $('#guessButton').attr("onclick", null);
+    $("#submitButton").removeAttr("onclick");
     $("#guess").empty();
     $("#guess").attr("placeholder", "Guess the SONG YEAR...");
 
