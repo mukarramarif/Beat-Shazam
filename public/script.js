@@ -2,7 +2,7 @@ let song;
 let totalPoints;
 $(document).ready(function() {
     
-    $('#submitButton').attr("onclick", function() {
+    $('#submitButton').on("click", function() {
         console.log($('#playlist-url-box').val());
         let url = new URL($('#playlist-url-box').val());
         let pathSegments = url.pathname.split('/');
