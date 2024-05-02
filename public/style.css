@@ -1,5 +1,5 @@
 h1{
-    color: white;
+    color: black;
     text-align: center;
     font-size: 30pt;
   }
@@ -26,6 +26,12 @@ html {
 #cc{
   display: flex;
   justify-content: center;
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  width: 40%;
+  background-color: white;
+  border-radius: 8px;
 }
 
 #guessingTable {
@@ -40,4 +46,5 @@ html {
 }
 #thumbnail{
   filter: blur(16px);
+  max-width: 140px;
 }
