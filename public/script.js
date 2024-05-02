@@ -86,13 +86,19 @@ function beginTitleRound() {
 
     let titlePoints = 100;
 
-    $('#guessButton').attr("onclick", function(){
+    $('#guessButton').on("click", function(){
         let guess = $('#guess').val();
         console.log(guess);
 
         if(guess === song.track.name){
             console.log("Correct name");
+
             beginYearRound();
+
+            $("#round").empty();
+            $("#round").append("Round 3");
+            $("#table-songtitle").empty();
+            $("#table-songtitle").append(guess);
 
         }
         else {
@@ -111,7 +117,7 @@ function beginYearRound() {
 
     let yearPoints = 100;
 
-    $('#guessButton').attr("onclick", function(){
+    $('#guessButton').on("click", function(){
         let guess = $('#guess').val();
         console.log(guess);
         console.log(song.track.album.release_date);
