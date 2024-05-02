@@ -17,7 +17,8 @@ $(document).ready(function() {
                 console.log(data);
                 song = createSongElement(data);
                 $("#container").hide();
-                $("#scoreborad").show();
+                $("#scoreboard").show();
+                $("#scoreboard").attr("id", "scoreboard-show");
                 $("#part-2-container").show();
                 $("#part-2-container").css("display", "flex");
                 $("#part-2-container").css("flex-wrap", "wrap");
@@ -52,6 +53,8 @@ $(document).ready(function() {
             points-=20;
         } else { //right answer, begin round 2...
             beginTitleRound();
+            $("round").emptu();
+            $("round").append("Round 2");
             $("#table-artistname").empty();
             $("#table-artistname").append(guess);
         }
