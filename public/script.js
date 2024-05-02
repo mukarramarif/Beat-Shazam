@@ -15,11 +15,7 @@ $(document).ready(function() {
                 console.log(data);
                 song = createSongElement(data);
                 $("#container").hide();
-                /*$("#container").append(`
-                                        <audio controls id='testSongId'>
-                                            <source src="${song}" type="audio/mp3">
-                                        </audio> 
-                                        <table id='guessingTable'></table>`);*/
+                
                 $("#part-2-container").show();
                 $("#part-2-container").css("display", "flex");
                 $("#part-2-container").css("flex-wrap", "wrap");
