@@ -25,7 +25,15 @@ body{
 html {
   font-family:"Kode Mono", monospace; /*font from google */
 }
-
+#scoreboard-show{
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+  color: white;
+  position: absolute;
+  top: 10%;
+  left: 30%;
+}
 #cc{
   display: flex;
   justify-content: center;
