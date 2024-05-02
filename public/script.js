@@ -46,7 +46,7 @@ $(document).ready(function() {
 
 
         let guess = $('#guess').val();
-        //$("#guess").val(''); //clear the input field
+        $("#guess").val(''); //clear the input field
         console.log(guess);
         let answer = false;
         for(let i=0; i<song.track.artists.length; i++){
@@ -90,7 +90,7 @@ function createSongElement(songs){
 }
 
 function beginTitleRound() {
-    
+    beganTitleRound = true;
     
     $("#guess").attr("placeholder", "Guess the SONG TITLE...");
 
@@ -102,6 +102,7 @@ function beginTitleRound() {
 
 
         let guess = $('#guess').val();
+        $("#guess").val(''); //clear the input field
         console.log(guess);
         console.log(song.track.name);
         if(guess === song.track.name){
@@ -126,6 +127,8 @@ function beginTitleRound() {
 }
 
 function beginYearRound() {
+    beganYearRound = true;
+
     $("#submitButton").removeAttr("onclick");
     $("#guess").empty();
     $("#guess").attr("placeholder", "Guess the SONG YEAR...");
@@ -134,11 +137,15 @@ function beginYearRound() {
 
     $('#guessButton').on("click", function(){
         let guess = $('#guess').val();
+        $("#guess").val(''); //clear the input field
         console.log(guess);
-        console.log(song.track.album.release_date);
+        console.log(song.track.album.release_date.substring(0,4));
 
-        if(guess === song.track.album.release_date){
+        if(guess === song.track.album.release_date.substring(0,4)){
             console.log("Correct year");
+
+            $("#table-year").empty();
+            $("#table-year").append(guess);
 
         }
         else {
