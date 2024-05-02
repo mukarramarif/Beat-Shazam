@@ -1,8 +1,10 @@
 let song;
 let totalPoints;
 $(document).ready(function() {
+
+    $("#submitButton").removeAttr("onclick");
     
-    $('#submitButton').click(function() {
+    $('#submitButton').on("click", function() {
         console.log($('#playlist-url-box').val());
         let url = new URL($('#playlist-url-box').val());
         let pathSegments = url.pathname.split('/');
@@ -51,16 +53,12 @@ $(document).ready(function() {
 
         if(!answer){
             console.log("Wrong artist");
-            if(points != 0){
-                points-=20;
-            }
-            $("#score").empty();
-            $("#score").append(points);
+            points-=20;
         } else { //right answer, begin round 2...
             $("guessButton").attr("id", "guessButton2");
             beginTitleRound();
-            $("round").empty();
-            $("round").append("Round 2");
+            $("#round").empty();
+            $("#round").append("Round 2");
             $("#table-artistname").empty();
             $("#table-artistname").append(guess);
         }
@@ -89,7 +87,7 @@ function beginTitleRound() {
 
     let titlePoints = 100;
 
-    $('#guessButton').click(function(){
+    $('#guessButton').attr("onclick", function(){
         let guess = $('#guess').val();
         console.log(guess);
         console.log(song.track.name);
@@ -109,7 +107,27 @@ function beginTitleRound() {
 }
 
 function beginYearRound() {
-    
+    $("#submitButton").removeAttr("onclick");
+    $("#guess").empty();
+    $("#guess").attr("placeholder", "Guess the SONG YEAR...");
+
+    let yearPoints = 100;
+
+    $('#guessButton').attr("onclick", function(){
+        let guess = $('#guess').val();
+        console.log(guess);
+        console.log(song.track.album.release_date);
+
+        if(guess === song.track.album.release_date){
+            console.log("Correct year");
+
+        }
+        else {
+            yearPoints -= 20;
+            console.log("Wrong year");
+        }
+
+    });
 }
 
 function getThumbnail(song){
