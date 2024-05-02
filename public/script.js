@@ -7,6 +7,7 @@ $(document).ready(function() {
         let playlistId = pathSegments[2];
         
         console.log(playlistId);
+
         $.ajax({
             url: "/send-playlist",
             type: 'GET',
@@ -15,18 +16,13 @@ $(document).ready(function() {
                 console.log(data);
                 song = createSongElement(data);
                 $("#container").hide();
-                /*$("#container").append(`
-                                        <audio controls id='testSongId'>
-                                            <source src="${song}" type="audio/mp3">
-                                        </audio> 
-                                        <table id='guessingTable'></table>`);*/
+                
                 $("#part-2-container").show();
                 $("#songFile").attr("src", song.track.preview_url);
                 $("audio")[0].load();
-            
-                
-                
 
+                $("#guess").attr("placeholder", "Guess the ARTIST...");
+                
             }
         });
     });
@@ -40,9 +36,14 @@ $(document).ready(function() {
                 if(guess === song.track.artists[i].name){
                     foundArtist = true;
                     console.log("correct");
+
+                    beginTitleRound();
                 }
-            }
-            if (!foundArtist) console.log("Wrong");
+        }
+        if (!foundArtist) {
+            console.log("Wrong");
+            
+        }
         
         
     });
@@ -58,5 +59,9 @@ function createSongElement(songs){
     }
     console.log(songUrl);
     return song;   
+}
+
+function beginTitleRound() {
+
 }
 
