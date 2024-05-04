@@ -1,13 +1,14 @@
 let song;
 let totalPoints;
-let points = 100;
-let titlePoints = 100;
-let yearPoints = 100;
+let points;
+let titlePoints
+let yearPoints
 
 let beganTitleRound = false;
 let beganYearRound = false;
 $(document).ready(function() {
     totalPoints = 0;
+    points = titlePoints = yearPoints = 100;
 
     $("#submitButton").removeAttr("onclick");
     
