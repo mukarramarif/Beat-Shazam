@@ -2,10 +2,15 @@
 
 let song;
 let totalPoints;
+let points;
+let titlePoints
+let yearPoints
+
 let beganTitleRound = false;
 let beganYearRound = false;
 $(document).ready(function() {
     totalPoints = 0;
+    points = titlePoints = yearPoints = 100;
 
     $("#submitButton").removeAttr("onclick");
     
@@ -42,7 +47,7 @@ $(document).ready(function() {
             }
         });
     });
-    let points = 100;
+    
     $('#guessButton').click(function(){
 
         if (!beganTitleRound) {
@@ -59,6 +64,7 @@ $(document).ready(function() {
                     answer = true;
                     console.log(points);
                     document.getElementById('score').innerHTML = "Round Score: " + points;
+                    document.getElementById('tscore').innerHTML = "Total Score: " + totalPoints;
                 }
         }
 
@@ -67,7 +73,11 @@ $(document).ready(function() {
             if(points != 0){
                 points-=20;
             }
+            if(points = 0){
+                answer = true;
+            }
             document.getElementById('score').innerHTML = "Round Score: " + points;
+            document.getElementById('tscore').innerHTML = "Total Score: " + totalPoints;
         } else { //right answer, begin round 2...
             $("guessButton").attr("id", "guessButton2");
             beginTitleRound();
@@ -106,7 +116,7 @@ function beginTitleRound() {
     
     $("#guess").attr("placeholder", "Guess the SONG TITLE...");
 
-    let titlePoints = 100;
+    
 
     $('#guessButton').on("click", function(){
 
@@ -127,13 +137,19 @@ function beginTitleRound() {
             $("#table-songtitle").append(guess);
 
             totalPoints += titlePoints;
-
+            document.getElementById('tscore').innerHTML = "Total Score: " + totalPoints;
             $("score").val(totalPoints);
 
         }
         else {
-            titlePoints -= 20;
+            if(titlePoints != 0){
+                titlePoints-=20;
+            }
+            if(titlePoints = 0){
+                beginYearRound()
+            }
             document.getElementById('score').innerHTML = "Round Score: " + titlePoints;
+            document.getElementById('tscore').innerHTML = "Total Score: " + totalPoints;
             console.log("Wrong name");
         }
 
@@ -150,7 +166,7 @@ function beginYearRound() {
     $("#guess").empty();
     $("#guess").attr("placeholder", "Guess the SONG YEAR...");
 
-    let yearPoints = 100;
+    
 
     $('#guessButton').on("click", function(){
         let guess = $('#guess').val();
@@ -163,15 +179,20 @@ function beginYearRound() {
             $("#thumbnail").css("filter", "none");
             $("#table-year").empty();
             $("#table-year").append(guess);
-            document.getElementById('score').innerHTML = "Round Score: " + yearPoints;
             totalPoints += yearPoints;
-
+            document.getElementById('score').innerHTML = "Round Score: " + yearPoints;
+            document.getElementById('tscore').innerHTML = "Total Score: " + totalPoints;
             $("score").val(yearPoints);
+
+            console.log("Total points "+totalPoints+", Artist points "+points+", Title points +"+titlePoints+", Year points" +yearPoints);
 
         }
         else {
-            yearPoints -= 20;
+            if(yearPoints != 0){
+                yearPoints-=20;
+            }
             document.getElementById('score').innerHTML = "Round Score: " + yearPoints;
+            document.getElementById('tscore').innerHTML = "Total Score: " + totalPoints;
             console.log("Wrong year");
         }
         if(totalPoints === 0){
