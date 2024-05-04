@@ -74,7 +74,7 @@ $(document).ready(function() {
             if(points !== 0){
                 points-=20;
             }
-            if(points == 0){ //failed round 1
+            if(points === 0){
                 answer = true;
 
                 $("#table-artistname").empty();
@@ -87,6 +87,7 @@ $(document).ready(function() {
             }
             document.getElementById('score').innerHTML = "Round Score: " + points;
             document.getElementById('tscore').innerHTML = "Total Score: " + totalPoints;
+            beginTitleRound();
         } else { //right answer, begin round 2...
             $("guessButton").attr("id", "guessButton2");
             beginTitleRound();
@@ -153,7 +154,7 @@ function beginTitleRound() {
             if(titlePoints !== 0){
                 titlePoints-=20;
             }
-            if(titlePoints == 0){
+            if(titlePoints === 0){
                 beginYearRound();
 
                 $("#table-songtitle").empty();
@@ -228,7 +229,7 @@ function beginYearRound() {
                         "gamelost",
                         windowFeatures,
                     );
-        
+                    handle.document.write(`In Round 1 you scored${points} points. In Round 2 you scored ${titlePoints} points. In Round 3 you scored ${yearPoints} points. Your total score is ${totalPoints} points.`);
                     // location.reload();
                 }
                 
@@ -239,6 +240,7 @@ function beginYearRound() {
             
         }
         
+        
     });
 }
 
@@ -246,6 +248,3 @@ function getThumbnail(song){
     return song.track.album.images[0].url;
 }
 
-function showEndScreen() {
-
-}
