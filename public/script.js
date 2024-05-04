@@ -3,6 +3,7 @@ let totalPoints;
 let beganTitleRound = false;
 let beganYearRound = false;
 $(document).ready(function() {
+    totalPoints = 0;
 
     $("#submitButton").removeAttr("onclick");
     
@@ -55,12 +56,16 @@ $(document).ready(function() {
                     console.log("correct artist");
                     answer = true;
                     console.log(points);
+                    document.getElementById('score').innerHTML = "Round Score: " + points;
                 }
         }
 
         if(!answer){
             console.log("Wrong artist");
-            points-=20;
+            if(points != 0){
+                points-=20;
+            }
+            document.getElementById('score').innerHTML = "Round Score: " + points;
         } else { //right answer, begin round 2...
             $("guessButton").attr("id", "guessButton2");
             beginTitleRound();
@@ -68,6 +73,9 @@ $(document).ready(function() {
             $("#round").append("Round 2");
             $("#table-artistname").empty();
             $("#table-artistname").append(guess);
+            totalPoints += points;
+            $("#scoreboard").append(`<p>${totalPoints}</p>`);
+            $("score").val(totalPoints);
         }
         if(points === 0){
             const windowFeatures = "left=100,top=100,width=320,height=320";
@@ -114,21 +122,25 @@ function beginTitleRound() {
 
         let guess = $('#guess').val();
         $('#guess').val(''); //clear the input field
-        $("#guess").val(''); //clear the input field
         console.log(guess);
         console.log(song.track.name);
         if(guess === song.track.name){
             console.log("Correct name");
             beginYearRound();
-
+            document.getElementById('score').innerHTML = "Round Score: " + titlePoints;
             $("#round").empty();
             $("#round").append("Round 3");
             $("#table-songtitle").empty();
             $("#table-songtitle").append(guess);
 
+            totalPoints += titlePoints;
+
+            $("score").val(totalPoints);
+
         }
         else {
             titlePoints -= 20;
+            document.getElementById('score').innerHTML = "Round Score: " + titlePoints;
             console.log("Wrong name");
         }
 
@@ -158,10 +170,15 @@ function beginYearRound() {
             $("#thumbnail").css("filter", "none");
             $("#table-year").empty();
             $("#table-year").append(guess);
+            document.getElementById('score').innerHTML = "Round Score: " + yearPoints;
+            totalPoints += yearPoints;
+
+            $("score").val(yearPoints);
 
         }
         else {
             yearPoints -= 20;
+            document.getElementById('score').innerHTML = "Round Score: " + yearPoints;
             console.log("Wrong year");
         }
 
