@@ -69,6 +69,16 @@ $(document).ready(function() {
             $("#table-artistname").empty();
             $("#table-artistname").append(guess);
         }
+        if(points === 0){
+            const windowFeatures = "left=100,top=100,width=320,height=320";
+            const handle = window.open(
+                "https://localhost:3000/gamelost",
+                "gamelost",
+                windowFeatures,
+            );
+
+            // location.reload();
+        }
 }});
     $("guessButton2").click(function(){
         beginTitleRound();
@@ -145,7 +155,7 @@ function beginYearRound() {
 
         if(guess === song.track.album.release_date.substring(0,4)){
             console.log("Correct year");
-
+            $("#thumbnail").css("filter", "none");
             $("#table-year").empty();
             $("#table-year").append(guess);
 
