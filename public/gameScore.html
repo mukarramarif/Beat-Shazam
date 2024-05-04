@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Lost</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+        }
+
+        .GameScore {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-image: url(./assets/trombone_player.jpg);
+            background-size: cover;
+            background-position: center;
+            font-family:"Kode Mono", monospace;
+        }
+        button{
+            font-size: 30px;
+            padding: 40px;
+        }
+        #score{
+            color: white;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <script src="jquery.min.js" crossorigin="anonymous"></script>
+    <script>
+        let points;
+        $(document).ready(function(){
+            $.ajax({
+                url: 'getScore',
+                method: 'GET',
+                success: function(data){
+                    points = data;
+                    $('#score').append(`For Round 1 you scored ${points.points} points. For Round 2 you scored ${points.titlePoints} points. For Round 3 you scored ${points.yearPoints}. Total score is ${points.totalPoints} points.`);
+                }
+            });
+        });
+        
+    </script>
+    <div class="GameScore">
+        <h1 style="color: white; font-size: 50px;">You Score</h1>
+        <p id="score">
+
+        </p>
+        <a href="javascript:window.opener.location.reload(true);self.close();">
+            <button >Try again?</button>
+        </a>
+        
+    </div>
+</body>
+</html>

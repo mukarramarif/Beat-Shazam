@@ -15,7 +15,7 @@ const __dirname = dirname(__filename);
 const RapidKey = process.env.RAPID_KEY;
 import fetch from 'node-fetch';
 
-
+let score;
 
 app.use(express.static(
     path.resolve(__dirname, "public")
@@ -41,6 +41,14 @@ async function startServer() {
 
     app.get("/gamelost", (req, res) => {
         res.sendFile(path.resolve(__dirname, 'public', "gamelost.html"));
+    });
+    app.get("/gameScore", (req, res) => {
+        score = req.query;
+        console.log(score);
+        res.sendFile(path.resolve(__dirname, 'public', "gameScore.html"));
+    });
+    app.get("/getScore", (req, res) => {
+        res.send(score);
     });
     app.listen(3000, () => {
         console.log('Server is running on port 3000');

@@ -218,37 +218,37 @@ function beginYearRound() {
                 $("#table-year").css("color", "red");
             
 
-                if(totalPoints === 0){
-           
-
-            
-
-
-                $.ajax({
-                    url: "/gamelost",
-                    type: 'GET',
-                    success: function(data) { 
-                        console.log("game lost");
-                        console.log(data);
-                    }
-                });
-                const windowFeatures = "left=100,top=100,width=320,height=320";
-                const handle = window.open(
-                    "http://localhost:3000/gamelost",
-                    "gamelost",
-                    windowFeatures,
-                );
-
-                // location.reload();
-                }
-                else{
+                if (totalPoints === 0) {
+                    $.ajax({
+                        url: "/gamelost",
+                        type: 'GET',
+                        success: function(data) {
+                            console.log("game lost");
+                            console.log(data);
+                        }
+                    });
                     const windowFeatures = "left=100,top=100,width=320,height=320";
-                    var handle = window.open(
-                        "",
-                        "game",
+                    const handle = window.open(
+                        "http://localhost:3000/gamelost.html",
+                        "gamelost",
                         windowFeatures,
                     );
-                    handle.document.write(`<p>In Round 1 you scored${points} points. In Round 2 you scored ${titlePoints} points. In Round 3 you scored ${yearPoints} points. Your total score is ${totalPoints} points.</p>`);
+                } else {
+                    $.ajax({
+                        url: "/gameScore",
+                        type: 'GET',
+                        data: { points: points, titlePoints: titlePoints, yearPoints: yearPoints, totalPoints: totalPoints },
+                        success: function(data) {
+                            console.log("game score sent");
+                            console.log(data);
+                        }
+                    });
+                    const windowFeatures = "left=100,top=100,width=320,height=320";
+                    var handle = window.open(
+                        "http://localhost:3000/gameScore.html",
+                        "gameScore",
+                        windowFeatures,
+                    );
                 }
             }
         }
