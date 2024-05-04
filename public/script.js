@@ -209,45 +209,45 @@ function beginYearRound() {
                 $("#table-year").append(song.track.album.release_date.substring(0,4));
                 $("#table-year").css("color", "red");
 
-                if(totalPoints === 0){
+            if(totalPoints === 0){
            
 
             
 
 
-                    $.ajax({
-                        url: "/gamelost",
-                        type: 'GET',
-                        success: function(data) { 
-                            console.log("game lost");
-                             
-                        }
-                    });
-                    const windowFeatures = "left=100,top=100,width=320,height=320";
-                    const handle = window.open(
-                        "/gamelost.html",
-                        "gamelost",
-                        windowFeatures,
-                    );
-                    handle.document.getElementById("gameScore").val(`In Round 1 you scored ${points} points. In Round 2 you scored ${titlePoints} points. In Round 3 you scored ${yearPoints} points. Your total score is ${totalPoints} points.`);
-                    // location.reload();
-                }
-                
+                $.ajax({
+                    url: "/gamelost",
+                    type: 'GET',
+                    success: function(data) { 
+                    console.log("game lost");
+                     
+                    }
+                });
+                const windowFeatures = "left=100,top=100,width=320,height=320";
+                const handle = window.open(
+                    "http://localhost:3000/gamelost",
+                    "gamelost",
+                    windowFeatures,
+                );
+
+            // location.reload();
             }
-            document.getElementById('score').innerHTML = "Round Score: " + yearPoints;
-            document.getElementById('tscore').innerHTML = "Total Score: " + totalPoints;
-            console.log("Wrong year");
-            
-        }
-        
-        
+            else{
+                const windowFeatures = "left=100,top=100,width=320,height=320";
+                var handle = window.open(
+                    "",
+                    "game",
+                    windowFeatures,
+                );
+                handle.document.write(`<p>In Round 1 you scored${points} points. In Round 2 you scored ${titlePoints} points. In Round 3 you scored ${yearPoints} points. Your total score is ${totalPoints} points.</p>`);
+                }
+            }
+        }    
+    
     });
-}
+}    
 
 function getThumbnail(song){
     return song.track.album.images[0].url;
 }
 
-function showEndScreen() {
-
-}
