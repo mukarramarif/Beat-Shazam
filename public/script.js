@@ -57,6 +57,7 @@ $(document).ready(function() {
                     answer = true;
                     console.log(points);
                     document.getElementById('score').innerHTML = "Round Score: " + points;
+                    document.getElementById('tscore').innerHTML = "Total Score: " + totalPoints;
                 }
         }
 
@@ -66,6 +67,7 @@ $(document).ready(function() {
                 points-=20;
             }
             document.getElementById('score').innerHTML = "Round Score: " + points;
+            document.getElementById('tscore').innerHTML = "Total Score: " + totalPoints;
         } else { //right answer, begin round 2...
             $("guessButton").attr("id", "guessButton2");
             beginTitleRound();
@@ -124,13 +126,14 @@ function beginTitleRound() {
             $("#table-songtitle").append(guess);
 
             totalPoints += titlePoints;
-
+            document.getElementById('tscore').innerHTML = "Total Score: " + totalPoints;
             $("score").val(totalPoints);
 
         }
         else {
             titlePoints -= 20;
             document.getElementById('score').innerHTML = "Round Score: " + titlePoints;
+            document.getElementById('tscore').innerHTML = "Total Score: " + totalPoints;
             console.log("Wrong name");
         }
 
@@ -160,15 +163,16 @@ function beginYearRound() {
 
             $("#table-year").empty();
             $("#table-year").append(guess);
-            document.getElementById('score').innerHTML = "Round Score: " + yearPoints;
             totalPoints += yearPoints;
-
+            document.getElementById('score').innerHTML = "Round Score: " + yearPoints;
+            document.getElementById('tscore').innerHTML = "Total Score: " + totalPoints;
             $("score").val(yearPoints);
 
         }
         else {
             yearPoints -= 20;
             document.getElementById('score').innerHTML = "Round Score: " + yearPoints;
+            document.getElementById('tscore').innerHTML = "Total Score: " + totalPoints;
             console.log("Wrong year");
         }
 

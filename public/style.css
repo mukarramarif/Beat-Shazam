@@ -12,7 +12,12 @@ body{
 #score{
    color: black;
     text-align: center;
-    font-size: 30pt;
+    font-size: 10pt;
+}
+#tscore{
+  color: black;
+   text-align: center;
+   font-size: 10pt;
 }
 #playlist-url-box
 { 
