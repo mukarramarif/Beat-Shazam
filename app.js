@@ -40,7 +40,7 @@ async function startServer() {
     });
 
     app.get("/gamelost", (req, res) => {
-        res.sendFile(path.resolve(__dirname, "public", "gamelost.html"));
+        res.sendFile(path.resolve(__dirname, "gamelost.html"));
     });
     app.listen(3000, () => {
         console.log('Server is running on port 3000');

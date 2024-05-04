@@ -1,3 +1,5 @@
+
+
 let song;
 let totalPoints;
 let points;
@@ -71,6 +73,9 @@ $(document).ready(function() {
             if(points != 0){
                 points-=20;
             }
+            if(points = 0){
+                answer = true;
+            }
             document.getElementById('score').innerHTML = "Round Score: " + points;
             document.getElementById('tscore').innerHTML = "Total Score: " + totalPoints;
         } else { //right answer, begin round 2...
@@ -84,16 +89,7 @@ $(document).ready(function() {
             $("#scoreboard").append(`<p>${totalPoints}</p>`);
             $("score").val(totalPoints);
         }
-        if(points === 0){
-            const windowFeatures = "left=100,top=100,width=320,height=320";
-            const handle = window.open(
-                "https://localhost:3000/gamelost",
-                "gamelost",
-                windowFeatures,
-            );
-
-            // location.reload();
-        }
+        
 }});
     $("guessButton2").click(function(){
         beginTitleRound();
@@ -146,7 +142,12 @@ function beginTitleRound() {
 
         }
         else {
-            titlePoints -= 20;
+            if(titlePoints != 0){
+                titlePoints-=20;
+            }
+            if(titlePoints = 0){
+                beginYearRound()
+            }
             document.getElementById('score').innerHTML = "Round Score: " + titlePoints;
             document.getElementById('tscore').innerHTML = "Total Score: " + totalPoints;
             console.log("Wrong name");
@@ -188,12 +189,32 @@ function beginYearRound() {
 
         }
         else {
-            yearPoints -= 20;
+            if(yearPoints != 0){
+                yearPoints-=20;
+            }
             document.getElementById('score').innerHTML = "Round Score: " + yearPoints;
             document.getElementById('tscore').innerHTML = "Total Score: " + totalPoints;
             console.log("Wrong year");
         }
+        if(totalPoints === 0){
+           
+            $.ajax({
+                url: "/gamelost",
+                type: 'GET',
+                success: function(data) { 
+                    console.log("game lost");
+                     
+                }
+            });
+            const windowFeatures = "left=100,top=100,width=320,height=320";
+            const handle = window.open(
+                "http://localhost:3000/gamelost",
+                "gamelost",
+                windowFeatures,
+            );
 
+            // location.reload();
+        }
     });
 }
 
