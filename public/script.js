@@ -207,35 +207,38 @@ function beginYearRound() {
                 $("#table-year").empty();
                 $("#table-year").append(song.track.album.release_date.substring(0,4));
                 $("#table-year").css("color", "red");
+
+                if(totalPoints === 0){
+           
+
+            
+
+
+                    $.ajax({
+                        url: "/gamelost",
+                        type: 'GET',
+                        success: function(data) { 
+                            console.log("game lost");
+                             
+                        }
+                    });
+                    const windowFeatures = "left=100,top=100,width=320,height=320";
+                    const handle = window.open(
+                        "/gamelost.html",
+                        "gamelost",
+                        windowFeatures,
+                    );
+        
+                    // location.reload();
+                }
+                
             }
             document.getElementById('score').innerHTML = "Round Score: " + yearPoints;
             document.getElementById('tscore').innerHTML = "Total Score: " + totalPoints;
             console.log("Wrong year");
             
         }
-        if(totalPoints === 0){
-           
-
-            
-
-
-            $.ajax({
-                url: "/gamelost",
-                type: 'GET',
-                success: function(data) { 
-                    console.log("game lost");
-                     
-                }
-            });
-            const windowFeatures = "left=100,top=100,width=320,height=320";
-            const handle = window.open(
-                "http://localhost:3000/gamelost",
-                "gamelost",
-                windowFeatures,
-            );
-
-            // location.reload();
-        }
+        
     });
 }
 
