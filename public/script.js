@@ -64,6 +64,7 @@ $(document).ready(function() {
                     answer = true;
                     console.log(points);
                     document.getElementById('score').innerHTML = "Round Score: " + points;
+                    totalPoints+=points;
                     document.getElementById('tscore').innerHTML = "Total Score: " + totalPoints;
                 }
         }
@@ -73,7 +74,7 @@ $(document).ready(function() {
             if(points != 0){
                 points-=20;
             }
-            if(points = 0){
+            if(points == 0){
                 answer = true;
             }
             document.getElementById('score').innerHTML = "Round Score: " + points;
@@ -85,7 +86,6 @@ $(document).ready(function() {
             $("#round").append("Round 2");
             $("#table-artistname").empty();
             $("#table-artistname").append(guess);
-            totalPoints += points;
             $("#scoreboard").append(`<p>${totalPoints}</p>`);
             $("score").val(totalPoints);
         }
@@ -145,7 +145,7 @@ function beginTitleRound() {
             if(titlePoints != 0){
                 titlePoints-=20;
             }
-            if(titlePoints = 0){
+            if(titlePoints == 0){
                 beginYearRound()
             }
             document.getElementById('score').innerHTML = "Round Score: " + titlePoints;
