@@ -3,8 +3,8 @@
 let song;
 let totalPoints;
 let points;
-let titlePoints
-let yearPoints
+let titlePoints;
+let yearPoints;
 
 let beganTitleRound = false;
 let beganYearRound = false;
@@ -64,17 +64,26 @@ $(document).ready(function() {
                     answer = true;
                     console.log(points);
                     document.getElementById('score').innerHTML = "Round Score: " + points;
+                    totalPoints+=points;
                     document.getElementById('tscore').innerHTML = "Total Score: " + totalPoints;
                 }
         }
 
         if(!answer){
             console.log("Wrong artist");
-            if(points != 0){
+            if(points !== 0){
                 points-=20;
             }
             if(points === 0){
                 answer = true;
+
+                $("#table-artistname").empty();
+                $("#table-artistname").append(song.track.artists[0].name);
+                $("#table-artistname").css("color", "red");
+
+                beginTitleRound();
+
+
             }
             document.getElementById('score').innerHTML = "Round Score: " + points;
             document.getElementById('tscore').innerHTML = "Total Score: " + totalPoints;
@@ -86,7 +95,6 @@ $(document).ready(function() {
             $("#round").append("Round 2");
             $("#table-artistname").empty();
             $("#table-artistname").append(guess);
-            totalPoints += points;
             $("#scoreboard").append(`<p>${totalPoints}</p>`);
             $("score").val(totalPoints);
         }
@@ -143,11 +151,15 @@ function beginTitleRound() {
 
         }
         else {
-            if(titlePoints != 0){
+            if(titlePoints !== 0){
                 titlePoints-=20;
             }
             if(titlePoints === 0){
-                beginYearRound()
+                beginYearRound();
+
+                $("#table-songtitle").empty();
+                $("#table-songtitle").append(song.track.name);
+                $("#table-songtitle").css("color", "red");
             }
             document.getElementById('score').innerHTML = "Round Score: " + titlePoints;
             document.getElementById('tscore').innerHTML = "Total Score: " + totalPoints;
@@ -186,18 +198,28 @@ function beginYearRound() {
             $("score").val(yearPoints);
 
             console.log("Total points "+totalPoints+", Artist points "+points+", Title points +"+titlePoints+", Year points" +yearPoints);
+            showEndScreen();
 
         }
         else {
-            if(yearPoints != 0){
+            if(yearPoints !== 0){
                 yearPoints-=20;
+            } else {
+                $("#table-year").empty();
+                $("#table-year").append(song.track.album.release_date.substring(0,4));
+                $("#table-year").css("color", "red");
             }
             document.getElementById('score').innerHTML = "Round Score: " + yearPoints;
             document.getElementById('tscore').innerHTML = "Total Score: " + totalPoints;
             console.log("Wrong year");
+            
         }
         if(totalPoints === 0){
            
+
+            
+
+
             $.ajax({
                 url: "/gamelost",
                 type: 'GET',
@@ -230,3 +252,4 @@ function beginYearRound() {
 function getThumbnail(song){
     return song.track.album.images[0].url;
 }
+
