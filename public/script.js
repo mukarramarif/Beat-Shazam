@@ -234,7 +234,7 @@ function beginYearRound() {
                 });
                 const windowFeatures = "left=100,top=100,width=320,height=320";
                 const handle = window.open(
-                    "http://localhost:3000/gamelost",
+                    "http://localhost:3000/gamelost.html",
                     "gamelost",
                     windowFeatures,
                 );
@@ -248,7 +248,7 @@ function beginYearRound() {
                         "game",
                         windowFeatures,
                     );
-                    handle.document.write(`<p>In Round 1 you scored${points} points. In Round 2 you scored ${titlePoints} points. In Round 3 you scored ${yearPoints} points. Your total score is ${totalPoints} points.</p>`);
+                    handle.document.write(`<p>In Round 1 you scored ${points} points. In Round 2 you scored ${titlePoints} points. In Round 3 you scored ${yearPoints} points. Your total score is ${totalPoints} points.</p>`);
                 }
             }
         }
