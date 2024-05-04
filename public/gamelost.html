@@ -30,11 +30,17 @@
     </style>
 </head>
 <body>
-    
+    <!-- <script>
+        function reloadGame(){
+            window.opener.location.reload(true);
+            window.close();
+            e.preventDefault();
+        }
+    </script> -->
     <div class="lostGame">
         <h1 style="color: white; font-size: 50px;">You Lost The Game</h1>
-        <a href="index.html">
-            <button>Try again?</button>
+        <a href="javascript:window.opener.location.reload(true);self.close();">
+            <button >Try again?</button>
         </a>
         
     </div>

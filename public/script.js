@@ -1,3 +1,5 @@
+
+
 let song;
 let totalPoints;
 let beganTitleRound = false;
@@ -77,16 +79,7 @@ $(document).ready(function() {
             $("#scoreboard").append(`<p>${totalPoints}</p>`);
             $("score").val(totalPoints);
         }
-        if(points === 0){
-            const windowFeatures = "left=100,top=100,width=320,height=320";
-            const handle = window.open(
-                "https://localhost:3000/gamelost",
-                "gamelost",
-                windowFeatures,
-            );
-
-            // location.reload();
-        }
+        
 }});
     $("guessButton2").click(function(){
         beginTitleRound();
@@ -181,7 +174,25 @@ function beginYearRound() {
             document.getElementById('score').innerHTML = "Round Score: " + yearPoints;
             console.log("Wrong year");
         }
+        if(totalPoints === 0){
+           
+            $.ajax({
+                url: "/gamelost",
+                type: 'GET',
+                success: function(data) { 
+                    console.log("game lost");
+                     
+                }
+            });
+            const windowFeatures = "left=100,top=100,width=320,height=320";
+            const handle = window.open(
+                "http://localhost:3000/gamelost",
+                "gamelost",
+                windowFeatures,
+            );
 
+            // location.reload();
+        }
     });
 }
 
