@@ -90,13 +90,13 @@ $(document).ready(function() {
             beginTitleRound();
         } else { //right answer, begin round 2...
             $("guessButton").attr("id", "guessButton2");
-            beginTitleRound();
             $("#round").empty();
             $("#round").append("Round 2");
             $("#table-artistname").empty();
             $("#table-artistname").append(guess);
             $("#scoreboard").append(`<p>${totalPoints}</p>`);
             $("score").val(totalPoints);
+            beginTitleRound();
         }
         
 }});
@@ -202,7 +202,7 @@ function beginYearRound() {
 
         }
         else {
-            if(yearPoints !== 0){
+            if(yearPoints != 0){
                 yearPoints-=20;
             } else {
                 $("#table-year").empty();
@@ -248,3 +248,6 @@ function getThumbnail(song){
     return song.track.album.images[0].url;
 }
 
+function showEndScreen() {
+
+}
