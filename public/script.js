@@ -87,7 +87,7 @@ $(document).ready(function() {
             }
             document.getElementById('score').innerHTML = "Round Score: " + points;
             document.getElementById('tscore').innerHTML = "Total Score: " + totalPoints;
-            beginTitleRound();
+            
         } else { //right answer, begin round 2...
             $("guessButton").attr("id", "guessButton2");
             $("#round").empty();
@@ -151,6 +151,7 @@ function beginTitleRound() {
 
         }
         else {
+            document.getElementById('score').innerHTML = "Round Score: " + titlePoints;
             if(titlePoints !== 0){
                 titlePoints-=20;
             }
@@ -198,18 +199,26 @@ function beginYearRound() {
             $("score").val(yearPoints);
 
             console.log("Total points "+totalPoints+", Artist points "+points+", Title points +"+titlePoints+", Year points" +yearPoints);
-            showEndScreen();
+            const windowFeatures = "left=100,top=100,width=320,height=320";
+                var handle = window.open(
+                    "",
+                    "game",
+                    windowFeatures,
+                );
+            handle.document.write(`<p>In Round 1 you scored${points} points. In Round 2 you scored ${titlePoints} points. In Round 3 you scored ${yearPoints} points. Your total score is ${totalPoints} points.</p>`);
 
         }
         else {
+            document.getElementById('score').innerHTML = "Round Score: " + yearPoints;
             if(yearPoints != 0){
                 yearPoints-=20;
             } else {
                 $("#table-year").empty();
                 $("#table-year").append(song.track.album.release_date.substring(0,4));
                 $("#table-year").css("color", "red");
+            
 
-            if(totalPoints === 0){
+                if(totalPoints === 0){
            
 
             
@@ -219,8 +228,8 @@ function beginYearRound() {
                     url: "/gamelost",
                     type: 'GET',
                     success: function(data) { 
-                    console.log("game lost");
-                     
+                        console.log("game lost");
+                        console.log(data);
                     }
                 });
                 const windowFeatures = "left=100,top=100,width=320,height=320";
@@ -230,19 +239,19 @@ function beginYearRound() {
                     windowFeatures,
                 );
 
-            // location.reload();
-            }
-            else{
-                const windowFeatures = "left=100,top=100,width=320,height=320";
-                var handle = window.open(
-                    "",
-                    "game",
-                    windowFeatures,
-                );
-                handle.document.write(`<p>In Round 1 you scored${points} points. In Round 2 you scored ${titlePoints} points. In Round 3 you scored ${yearPoints} points. Your total score is ${totalPoints} points.</p>`);
+                // location.reload();
+                }
+                else{
+                    const windowFeatures = "left=100,top=100,width=320,height=320";
+                    var handle = window.open(
+                        "",
+                        "game",
+                        windowFeatures,
+                    );
+                    handle.document.write(`<p>In Round 1 you scored${points} points. In Round 2 you scored ${titlePoints} points. In Round 3 you scored ${yearPoints} points. Your total score is ${totalPoints} points.</p>`);
                 }
             }
-        }    
+        }
     
     });
 }    
