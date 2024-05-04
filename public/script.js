@@ -1,8 +1,8 @@
 let song;
 let totalPoints;
 let points;
-let titlePoints
-let yearPoints
+let titlePoints;
+let yearPoints;
 
 let beganTitleRound = false;
 let beganYearRound = false;
@@ -184,6 +184,7 @@ function beginYearRound() {
             $("score").val(yearPoints);
 
             console.log("Total points "+totalPoints+", Artist points "+points+", Title points +"+titlePoints+", Year points" +yearPoints);
+            showEndScreen();
 
         }
         else {
@@ -198,4 +199,8 @@ function beginYearRound() {
 
 function getThumbnail(song){
     return song.track.album.images[0].url;
+}
+
+function showEndScreen() {
+    
 }
