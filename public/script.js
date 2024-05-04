@@ -229,7 +229,7 @@ function beginYearRound() {
                         "gamelost",
                         windowFeatures,
                     );
-                    handle.document.write(`In Round 1 you scored${points} points. In Round 2 you scored ${titlePoints} points. In Round 3 you scored ${yearPoints} points. Your total score is ${totalPoints} points.`);
+                    handle.document.getElementById("gameScore").val(`In Round 1 you scored ${points} points. In Round 2 you scored ${titlePoints} points. In Round 3 you scored ${yearPoints} points. Your total score is ${totalPoints} points.`);
                     // location.reload();
                 }
                 
