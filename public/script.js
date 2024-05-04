@@ -202,19 +202,14 @@ function beginYearRound() {
 
         }
         else {
-            if(yearPoints !== 0){
+            if(yearPoints != 0){
                 yearPoints-=20;
             } else {
                 $("#table-year").empty();
                 $("#table-year").append(song.track.album.release_date.substring(0,4));
                 $("#table-year").css("color", "red");
-            }
-            document.getElementById('score').innerHTML = "Round Score: " + yearPoints;
-            document.getElementById('tscore').innerHTML = "Total Score: " + totalPoints;
-            console.log("Wrong year");
-            
-        }
-        if(totalPoints === 0){
+
+                if(totalPoints === 0){
            
 
             
