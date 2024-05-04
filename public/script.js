@@ -70,10 +70,10 @@ $(document).ready(function() {
 
         if(!answer){
             console.log("Wrong artist");
-            if(points != 0){
+            if(points !== 0){
                 points-=20;
             }
-            if(points = 0){
+            if(points == 0){
                 answer = true;
             }
             document.getElementById('score').innerHTML = "Round Score: " + points;
@@ -142,11 +142,11 @@ function beginTitleRound() {
 
         }
         else {
-            if(titlePoints != 0){
+            if(titlePoints !== 0){
                 titlePoints-=20;
             }
-            if(titlePoints = 0){
-                beginYearRound()
+            if(titlePoints == 0){
+                beginYearRound();
             }
             document.getElementById('score').innerHTML = "Round Score: " + titlePoints;
             document.getElementById('tscore').innerHTML = "Total Score: " + totalPoints;
@@ -189,7 +189,7 @@ function beginYearRound() {
 
         }
         else {
-            if(yearPoints != 0){
+            if(yearPoints !== 0){
                 yearPoints-=20;
             }
             document.getElementById('score').innerHTML = "Round Score: " + yearPoints;
@@ -223,5 +223,5 @@ function getThumbnail(song){
 }
 
 function showEndScreen() {
-    
+
 }
