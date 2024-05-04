@@ -64,6 +64,7 @@ $(document).ready(function() {
                     answer = true;
                     console.log(points);
                     document.getElementById('score').innerHTML = "Round Score: " + points;
+                    totalPoints+=points;
                     document.getElementById('tscore').innerHTML = "Total Score: " + totalPoints;
                 }
         }
@@ -93,7 +94,6 @@ $(document).ready(function() {
             $("#round").append("Round 2");
             $("#table-artistname").empty();
             $("#table-artistname").append(guess);
-            totalPoints += points;
             $("#scoreboard").append(`<p>${totalPoints}</p>`);
             $("score").val(totalPoints);
         }
