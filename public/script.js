@@ -56,12 +56,16 @@ $(document).ready(function() {
                     console.log("correct artist");
                     answer = true;
                     console.log(points);
+                    document.getElementById('score').innerHTML = "Round Score: " + points;
                 }
         }
 
         if(!answer){
             console.log("Wrong artist");
-            points-=20;
+            if(points != 0){
+                points-=20;
+            }
+            document.getElementById('score').innerHTML = "Round Score: " + points;
         } else { //right answer, begin round 2...
             $("guessButton").attr("id", "guessButton2");
             beginTitleRound();
@@ -70,7 +74,7 @@ $(document).ready(function() {
             $("#table-artistname").empty();
             $("#table-artistname").append(guess);
             totalPoints += points;
-
+            $("#scoreboard").append(`<p>${totalPoints}</p>`);
             $("score").val(totalPoints);
         }
 }});
@@ -113,7 +117,7 @@ function beginTitleRound() {
         if(guess === song.track.name){
             console.log("Correct name");
             beginYearRound();
-
+            document.getElementById('score').innerHTML = "Round Score: " + titlePoints;
             $("#round").empty();
             $("#round").append("Round 3");
             $("#table-songtitle").empty();
@@ -126,6 +130,7 @@ function beginTitleRound() {
         }
         else {
             titlePoints -= 20;
+            document.getElementById('score').innerHTML = "Round Score: " + titlePoints;
             console.log("Wrong name");
         }
 
@@ -155,7 +160,7 @@ function beginYearRound() {
 
             $("#table-year").empty();
             $("#table-year").append(guess);
-
+            document.getElementById('score').innerHTML = "Round Score: " + yearPoints;
             totalPoints += yearPoints;
 
             $("score").val(yearPoints);
@@ -163,6 +168,7 @@ function beginYearRound() {
         }
         else {
             yearPoints -= 20;
+            document.getElementById('score').innerHTML = "Round Score: " + yearPoints;
             console.log("Wrong year");
         }
 
