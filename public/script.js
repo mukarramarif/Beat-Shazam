@@ -73,11 +73,12 @@ $(document).ready(function() {
             if(points != 0){
                 points-=20;
             }
-            if(points = 0){
+            if(points === 0){
                 answer = true;
             }
             document.getElementById('score').innerHTML = "Round Score: " + points;
             document.getElementById('tscore').innerHTML = "Total Score: " + totalPoints;
+            beginTitleRound();
         } else { //right answer, begin round 2...
             $("guessButton").attr("id", "guessButton2");
             beginTitleRound();
@@ -145,7 +146,7 @@ function beginTitleRound() {
             if(titlePoints != 0){
                 titlePoints-=20;
             }
-            if(titlePoints = 0){
+            if(titlePoints === 0){
                 beginYearRound()
             }
             document.getElementById('score').innerHTML = "Round Score: " + titlePoints;
@@ -213,6 +214,15 @@ function beginYearRound() {
             );
 
             // location.reload();
+        }
+        else{
+            const windowFeatures = "left=100,top=100,width=320,height=320";
+            var handle = window.open(
+                "",
+                "game",
+                windowFeatures,
+            );
+            handle.document.write(`In Round 1 you scored${points} points. In Round 2 you scored ${titlePoints} points. In Round 3 you scored ${yearPoints} points. Your total score is ${totalPoints} points.`)
         }
     });
 }
