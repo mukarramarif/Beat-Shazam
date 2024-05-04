@@ -8,7 +8,7 @@ let yearPoints;
 
 let beganTitleRound = false;
 let beganYearRound = false;
-$(document).ready(function() {
+$(document).ready(function() { //init function
     totalPoints = 0;
     points = titlePoints = yearPoints = 100;
 
@@ -25,7 +25,7 @@ $(document).ready(function() {
             url: "/send-playlist",
             type: 'GET',
             data: { id: playlistId },
-            success: function(data) { //successfully sent the playlist link
+            success: function(data) { //successfully sent the playlist link, set up the game phase
                 console.log(data);
                 song = createSongElement(data);
                 $("#container").hide();
@@ -38,7 +38,7 @@ $(document).ready(function() {
 
 
                 $("#songFile").attr("src", song.track.preview_url);
-                //$("body").css("background-image", "url(" + getThumbnail(song) + ")");
+                
                 $("audio")[0].load();
                 $("#thumbnail").attr("src", getThumbnail(song));
                 $("#guess").attr("placeholder", "Guess the ARTIST...");
@@ -48,7 +48,7 @@ $(document).ready(function() {
         });
     });
     
-    $('#guessButton').click(function(){
+    $('#guessButton').click(function(){ //when an artist guess is made
 
         if (!beganTitleRound) {
 
@@ -59,7 +59,7 @@ $(document).ready(function() {
         console.log(guess);
         let answer = false;
         for(let i=0; i<song.track.artists.length; i++){
-                if(guess === song.track.artists[i].name){
+                if(guess === song.track.artists[i].name){ //check each credited artist
                     console.log("correct artist");
                     answer = true;
                     console.log(points);
@@ -74,7 +74,7 @@ $(document).ready(function() {
             if(points !== 0){
                 points-=20;
             }
-            if(points === 0){
+            if(points === 0){ //enough wrong guesses and you failed the round and are sent to the next one, the correct name is displayed in red
                 answer = true;
 
                 $("#table-artistname").empty();
@@ -88,7 +88,7 @@ $(document).ready(function() {
             document.getElementById('score').innerHTML = "Round Score: " + points;
             document.getElementById('tscore').innerHTML = "Total Score: " + totalPoints;
             
-        } else { //right answer, begin round 2...
+        } else { //right answer, begin the song title round
             $("guessButton").attr("id", "guessButton2");
             $("#round").empty();
             $("#round").append("Round 2");
@@ -108,7 +108,7 @@ $(document).ready(function() {
 
 });
 
-function createSongElement(songs){
+function createSongElement(songs){ //choose a song object from the given playlist to be used as the mystery song
     let randomIndex = Math.floor(Math.random() * songs.items.length);
     console.log(randomIndex);
     let song = songs.items[randomIndex];
@@ -127,7 +127,7 @@ function beginTitleRound() {
 
     
 
-    $('#guessButton').on("click", function(){
+    $('#guessButton').on("click", function(){ //guess a song title if in the title round
 
         if (!beganYearRound) {
 
@@ -136,7 +136,7 @@ function beginTitleRound() {
         $('#guess').val(''); //clear the input field
         console.log(guess);
         console.log(song.track.name);
-        if(guess === song.track.name){
+        if(guess === song.track.name){ //right guess, proceed to the year round
             console.log("Correct name");
             beginYearRound();
             document.getElementById('score').innerHTML = "Round Score: " + titlePoints;
@@ -150,12 +150,12 @@ function beginTitleRound() {
             $("score").val(totalPoints);
 
         }
-        else {
+        else { //wrong guess
             document.getElementById('score').innerHTML = "Round Score: " + titlePoints;
-            if(titlePoints !== 0){
+            if(titlePoints !== 0){ //some guesses left, decrement round score & try again
                 titlePoints-=20;
             }
-            if(titlePoints === 0){
+            if(titlePoints === 0){ //no guesses left, give user the answer and go to year round
                 beginYearRound();
 
                 $("#table-songtitle").empty();
@@ -182,13 +182,13 @@ function beginYearRound() {
 
     
 
-    $('#guessButton').on("click", function(){
+    $('#guessButton').on("click", function(){ //a year is guessed in the year round
         let guess = $('#guess').val();
         $("#guess").val(''); //clear the input field
         console.log(guess);
-        console.log(song.track.album.release_date.substring(0,4));
+        console.log(song.track.album.release_date.substring(0,4)); //spotify gives us release date in YYYY-MM-DD format, this turns it to just YYYY
 
-        if(guess === song.track.album.release_date.substring(0,4)){
+        if(guess === song.track.album.release_date.substring(0,4)){ //right guess, finish game and proceed to success screen
             console.log("Correct year");
             $("#thumbnail").css("filter", "none");
             $("#table-year").empty();
@@ -208,11 +208,11 @@ function beginYearRound() {
             handle.document.write(`<p>In Round 1 you scored${points} points. In Round 2 you scored ${titlePoints} points. In Round 3 you scored ${yearPoints} points. Your total score is ${totalPoints} points.</p>`);
 
         }
-        else {
+        else { //wrong guess for year
             document.getElementById('score').innerHTML = "Round Score: " + yearPoints;
             if(yearPoints != 0){
-                yearPoints-=20;
-            } else {
+                yearPoints-=20; //some guesses remaining
+            } else { //no guesses remaining
                 $("#table-year").empty();
                 $("#table-year").append(song.track.album.release_date.substring(0,4));
                 $("#table-year").css("color", "red");
