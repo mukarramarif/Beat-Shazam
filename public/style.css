@@ -9,6 +9,11 @@ body{
 
     background-repeat: repeat;
 }
+#score{
+   color: black;
+    text-align: center;
+    font-size: 30pt;
+}
 #playlist-url-box
 { 
     height:fit-content;

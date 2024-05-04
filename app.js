@@ -39,7 +39,9 @@ async function startServer() {
         res.send(await fetch(url, options).then(response => response.json()));
     });
 
-    // Start your server here...
+    app.get("/gamelost", (req, res) => {
+        res.sendFile(path.resolve(__dirname, "public", "gamelost.html"));
+    });
     app.listen(3000, () => {
         console.log('Server is running on port 3000');
     });
