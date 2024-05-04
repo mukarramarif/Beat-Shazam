@@ -70,6 +70,9 @@ $(document).ready(function() {
             if(points != 0){
                 points-=20;
             }
+            if(points = 0){
+                answer = true;
+            }
             document.getElementById('score').innerHTML = "Round Score: " + points;
             document.getElementById('tscore').innerHTML = "Total Score: " + totalPoints;
         } else { //right answer, begin round 2...
@@ -145,7 +148,12 @@ function beginTitleRound() {
 
         }
         else {
-            titlePoints -= 20;
+            if(titlePoints != 0){
+                titlePoints-=20;
+            }
+            if(titlePoints = 0){
+                beginYearRound()
+            }
             document.getElementById('score').innerHTML = "Round Score: " + titlePoints;
             document.getElementById('tscore').innerHTML = "Total Score: " + totalPoints;
             console.log("Wrong name");
@@ -186,7 +194,9 @@ function beginYearRound() {
 
         }
         else {
-            yearPoints -= 20;
+            if(yearPoints != 0){
+                yearPoints-=20;
+            }
             document.getElementById('score').innerHTML = "Round Score: " + yearPoints;
             document.getElementById('tscore').innerHTML = "Total Score: " + totalPoints;
             console.log("Wrong year");
