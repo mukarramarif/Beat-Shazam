@@ -236,6 +236,7 @@ function beginYearRound() {
                         windowFeatures,
                     );
                 } else {
+                    $("#thumbnail").css("filter", "none");s
                     /*$.ajax({
                         url: "/gameScore",
                         type: 'GET',
