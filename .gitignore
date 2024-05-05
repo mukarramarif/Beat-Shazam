@@ -53,7 +53,7 @@ web_modules/
 package-lock.json
 # Optional eslint cache
 .eslintcache
-.API_KEY.env
+
 # Optional stylelint cache
 .stylelintcache
 
