@@ -14,7 +14,10 @@ body{
    text-align: center;
   font-size: 15pt;
 }
-
+#testSongId{
+  padding-left: 25%;
+  padding-right: 25%; 
+}
 #playlist-url-box
 { 
     height:fit-content;
