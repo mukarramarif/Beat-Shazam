@@ -8,8 +8,8 @@ Beat-Shazam is a web application that lets users play a game similar to the popu
 - Select a playlist from your Spotify account to play the game with.
 - Listen to a snippet of a randomly selected song from the chosen playlist.
 - Guess the artist, title, and year of the song.
-- Earn points based on the accuracy of your guesses.
-- Leaderboard to track high scores.
+
+
 
 ## Technologies Used
 
