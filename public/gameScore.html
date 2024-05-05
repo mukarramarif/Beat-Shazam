@@ -27,9 +27,9 @@
             font-size: 30px;
             padding: 40px;
         }
-        #score{
+        #score, #ratings{
             color: white;
-            font-size: 30px;
+            font-size: 20px;
         }
     </style>
 </head>
@@ -43,17 +43,42 @@
                 method: 'GET',
                 success: function(data){
                     points = data;
-                    $('#score').append(`For Round 1 you scored ${points.points} points. For Round 2 you scored ${points.titlePoints} points. For Round 3 you scored ${points.yearPoints}. Total score is ${points.totalPoints} points.`);
+                    $('#score').append(`For Round 1 you scored ${points.points} points.
+                     For Round 2 you scored ${points.titlePoints} points.
+                     For Round 3 you scored ${points.yearPoints}.
+                     Total score is ${points.totalPoints} points.`);
+
+                    $("#artist-stars").attr("src", `./assets/Star_rating_${Math.floor(points.points/20)}_of_5.png`);
+                    $("#title-stars").attr("src", `./assets/Star_rating_${Math.floor(points.titlePoints/20)}_of_5.png`);
+                    $("#year-stars").attr("src", `./assets/Star_rating_${Math.floor(points.yearPoints/20)}_of_5.png`);
+
                 }
             });
         });
         
     </script>
     <div class="GameScore">
-        <h1 style="color: white; font-size: 50px;">You Score</h1>
+        <h1 style="color: white; font-size: 50px;">Your  Score</h1>
         <p id="score">
 
         </p>
+
+        <table id="ratings" align="center">
+            <thead><th>Artist</th><th>Song Title</th><th>Year</th></thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <img id="artist-stars" alt="" src="" width="80px">
+                    </td>
+                    <td>
+                        <img id="title-stars" alt="" src="" width="80px">
+                    </td>
+                    <td>
+                        <img id="year-stars" alt="" src="" width="80px">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
         <a href="javascript:window.opener.location.reload(true);self.close();">
             <button >Try again?</button>
         </a>
