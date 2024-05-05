@@ -219,6 +219,7 @@ function beginYearRound() {
             
 
                 if (totalPoints === 0) {
+                    $("#thumbnail").css("filter", "none");
                     $.ajax({
                         url: "/gamelost",
                         type: 'GET',
